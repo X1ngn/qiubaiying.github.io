@@ -3,7 +3,7 @@ title: X1ng
 SEOTitle: X1ng
 header-img: img/back2.jpg
 email: s644630185@163.com
-description: "二进制咸鱼"
+description: "X1ng's simple blog."
 keyword: "binary"
 url: "http://x1ngn.github.io"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
@@ -11,7 +11,7 @@ github_repo: "https://github.com/qiubaiying/qiubaiying.github.io.git" # you code
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "欲速则不达"
+sidebar-about-description: "泉涸，鱼相与处于陆，相呴以湿，相濡以沫，不若相忘于江湖。"
 sidebar-avatar: /img/ji.png      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
@@ -57,16 +57,16 @@ kramdown:
 
 # 评论系统
 # Disqus（https://disqus.com/）
-# disqus_username: qiubaiying
+ disqus_username: X1ng
 
 # Gitalk
 #gitalk:
 #  enable: true    #是否开启Gitalk评论
 #  clientID: f2c84e7629bb1446c1a4                            #生成的clientID
 #  clientSecret: ca6d6139d1e1b8c43f8b2e19492ddcac8b322d0d    #生成的clientSecret
-#  repo: qiubaiying.github.io    #仓库名称
-#  owner: qiubaiying    #github用户名
-#  admin: qiubaiying
+#  repo: x1ngn.github.io    #仓库名称
+#  owner: x1ngn    #github用户名
+#  admin: x1ngn
 #  distractionFreeMode: true #是否启用类似FB的阴影遮罩
 
 
