@@ -8,7 +8,6 @@ header-img: img/hgame.png
 catalog: true
 tags:
     - hgame
-	- week1
     - wp
 
 
