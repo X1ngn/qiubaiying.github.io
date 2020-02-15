@@ -165,7 +165,7 @@ url编码加号，得到flag
 
 进入change（修改后的函数名）函数
 
-![函数](https://tva1.sinaimg.cn/large/0082zybpgy1gbxg9bbm8aj315a0j4gsw.jpg)
+![函数](https://tva1.sinaimg.cn/large/0082zybpgy1gbxpvvfu83j315e0j27bo.jpg)
 
 虽然看不懂，但是还好有gdb
 
