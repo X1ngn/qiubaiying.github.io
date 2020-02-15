@@ -185,10 +185,11 @@ url编码加号，得到flag
 
 ```python
 ezlife=['E','a','s','y','l','i','f','3']  
-ezre=['e','4','s','y','_','R','e','_']								#用ida查看异或结果匹配的字符串  
+ezre=['e','4','s','y','_','R','e','_']					#用ida查看异或结果匹配的字符串  
+
 newre=[]  
 newlife=[]  
-v6 = [0x4c,0x3c,0xd6,0x36,0x50,0x88,0x20,0xcc]				#用ida查看变量v6的值
+v6 = [0x4c,0x3c,0xd6,0x36,0x50,0x88,0x20,0xcc]	#用ida查看变量v6的值
 
 for ez in ezre:
     newre.append(ord(ez))
