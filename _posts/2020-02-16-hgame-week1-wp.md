@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      hgame write up
-subtitle:   week1
+title:       
+subtitle:    
 date:       2020-02-16
 author:     X1ng
 header-img: img/hgame.png
