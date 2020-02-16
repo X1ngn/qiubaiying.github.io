@@ -149,6 +149,7 @@ url编码加号，得到flag
 >描述
 >
 >还记得第三次C语言培训的作业“位运算”吗？这是2.0
+>
 >学习资料：[http://q42u2raim.bkt.clouddn.com/bitwise-hint1-xor.png](http://q42u2raim.bkt.clouddn.com/bitwise-hint1-xor.png)
 >
 >题目地址 链接:https://pan.baidu.com/s/1nQYJnvPwZCNWAnfmmJiEwQ  密码:vfls
@@ -326,10 +327,8 @@ py了一下**@幼稚园**学长以后得到学长的hint，内存的本质都是
 可以写exp了
 
 ```python
-#!/usr/bin/env python2
-
-# -*- coding: utf-8 -*-
-
+#!/usr/bin/env python2  
+# -*- coding: utf-8 -*-  
 from pwn import *
 
 p = process('./num')
@@ -408,10 +407,8 @@ p.interactive()
 写exp
 
 ```python
-#!/usr/bin/env python2
-
-# -*- coding: utf-8 -*-
-
+#!/usr/bin/env python2  
+# -*- coding: utf-8 -*-  
 from pwn import *
 
 p = process('./one')
@@ -461,10 +458,8 @@ p.interactive()
 写exp，用libcseacher直接计算偏移，再让程序返回main函数，再次覆盖返回地址，getshell
 
 ```python
-#!/usr/bin/env python2
-
-# -*- coding: utf-8 -*-
-
+#!/usr/bin/env python2  
+# -*- coding: utf-8 -*-  
 from pwn import *
 from LibcSearcher import *
 
