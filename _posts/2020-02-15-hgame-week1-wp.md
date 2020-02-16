@@ -262,9 +262,7 @@ for i in part2:
 
 ```python
 #!/usr/bin/env python2  
-
 # -*- coding: utf-8 -*-  
-
 from pwn import *  
 
 p = process('./aaa')
