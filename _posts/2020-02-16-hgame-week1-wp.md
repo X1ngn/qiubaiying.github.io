@@ -4,7 +4,7 @@ title:      hgame week1
 subtitle:   write up
 date:       2020-02-16
 author:     X1ng
-header-img: 
+header-img: week1.jpg
 catalog: true
 tags:
     - hgame
