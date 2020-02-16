@@ -1,10 +1,10 @@
 ---
 layout:     post
-title:       
-subtitle:    
+title:      hgame week1
+subtitle:   write up
 date:       2020-02-16
 author:     X1ng
-header-img: img/hgame.png
+header-img: 
 catalog: true
 tags:
     - hgame
@@ -12,6 +12,7 @@ tags:
 
 
 ---
+![logo](https://tva1.sinaimg.cn/large/0082zybpgy1gby40chf8qj317c0gwdxc.jpg)
 
 这个寒假参加了hgame，学到了不少东西，各位出题的学长辛苦了
 
