@@ -1,3 +1,19 @@
+---
+layout:     post
+title:      学习ret2dlresolve
+subtitle:   笔记
+date:       2020-03-18
+author:     X1ng
+header-img: ret2dlresolve.jpg
+catalog: true
+tags:
+    - 学习笔记
+
+
+---
+
+
+
 # 学习ret2dlresolve
 
 参考资料：
