@@ -122,6 +122,7 @@ typedef struct
   Elf32_Word    r_info;                 /* Relocation type and symbol index */
 } Elf32_Rel;
 #define ELF32_R_SYM(val) ((val) >> 8) 
+
 #define ELF32_R_TYPE(val) ((val) & 0xff)
 ```
 
