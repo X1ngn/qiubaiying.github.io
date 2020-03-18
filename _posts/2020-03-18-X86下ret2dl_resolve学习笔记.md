@@ -179,9 +179,13 @@ typedef struct
 ### 漏洞利用
 
 > 1.控制`eip`为PLT[0]的地址，只需传递一个`index_arg`参数
+>
 > 2.控制`index_arg`的大小，使`reloc`的位置落在可控地址内
+>
 > 3.伪造`reloc`的内容，使`sym`落在可控地址内
+>
 > 4.伪造`sym`的内容，使`name`落在可控地址内
+>
 > 5.伪造`name`为任意库函数，如`system`
 
 以Hgame2020 week4的ROP5为例
