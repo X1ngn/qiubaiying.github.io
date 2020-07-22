@@ -79,7 +79,7 @@ pip install pwntools -i https://pypi.tuna.tsinghua.edu.cn/simple
 ## 安装git
 通过git clone自己需要的工具
 ```bash
-apt install git
+sudo apt install git
 ```
 
 ## 安装peda
