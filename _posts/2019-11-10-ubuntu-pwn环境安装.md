@@ -73,7 +73,7 @@ sudo apt-get install python-pip
 （这里可以给pip换一下源，-i + （pip源）临时使用其他源）
 
 ```bash
-pip install pwntools -i https://pypi.tuna.tsinghua.edu.cn/simple
+pip install pwntools 
 ```
 
 ## 安装git
