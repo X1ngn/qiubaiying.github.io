@@ -98,6 +98,8 @@ a->%rdi, b->%rsi, c->%rdx, d->%rcx, e->%r8, f->%r9		h->8(%esp)		g->(%esp)
 
 相关函数逻辑就是提供一个Cookie再输入通过getbuf()往栈中输入一个字符串，存在溢出漏洞，可以控制`ret`返回地址
 
+需要加`-q`参数运行ctarget程序
+
 ### touch1
 
 在getbuf()中可以看到`sub rsp,0x28`可知栈长度为0x28
