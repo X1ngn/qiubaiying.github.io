@@ -40,11 +40,11 @@ hex2raw的使用说明
 
 3.结合gdb使用
 
-./hex2raw <attack.txt> attackraw.txt
+`./hex2raw <attack.txt> attackraw.txt`
 
-gdb ctarget
+`gdb ctarget`
 
-(gdb) run < attackraw.txt 或 (gdb) run -i attackraw.txt
+(gdb) `run < attackraw.txt` 或 (gdb) `run -i attackraw.txt`
 
 生成字节代码操作
 
