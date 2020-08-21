@@ -3,7 +3,7 @@ layout:     post
 title:      (转)解决升级pwntools-gdb.attach不能弹起gdb
 subtitle:   pwntools中gdb模块问题
 date:       2020-08-19
-author:     X1ng
+author:     
 header-img: gdb_attach.jpg
 catalog: true
 tags:
