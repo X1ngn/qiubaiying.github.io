@@ -54,7 +54,7 @@ echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
 
 ---
 
-以为环境问题重装了好多次环境，，原来是ubuntu的问题
+愚蠢地以为环境问题重装了好多次系统，，原来是ubuntu权限的问题
 
 ubuntu18.04环境下用pwntools报错
 
