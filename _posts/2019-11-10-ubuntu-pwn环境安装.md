@@ -119,7 +119,7 @@ sudo apt-get install lib32z1
 ### 安装one_gadget
 
 ```
-sudo apt -y install ruby
+sudo apt-get install ruby ruby-dev
 sudo gem install one_gadget
 ```
 
