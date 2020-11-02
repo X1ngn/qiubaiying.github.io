@@ -123,6 +123,13 @@ sudo apt-get install ruby ruby-dev
 sudo gem install one_gadget
 ```
 
+### 安装ROPgadget
+
+```
+git clone https://github.com/JonathanSalwan/ROPgadget.git
+cd ROPgadget
+sudo python setup.py install
+```
 
 
 ***
