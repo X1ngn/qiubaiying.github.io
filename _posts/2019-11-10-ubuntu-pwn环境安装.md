@@ -151,3 +151,22 @@ python setup.py install
 
 pwntools安装完毕，接着继续按上文路线安装
 
+
+
+---
+
+kali下需要安装python3的工具
+
+安装ROPgadget时报错
+
+![](https://tva1.sinaimg.cn/large/0081Kckwly1gkb19kaarej30x004ot97.jpg)
+
+用git安装，之后再继续安装ROPgadget
+
+```shell
+git clone https://github.com/aquynh/capstone
+cd capstone
+make
+make install
+```
+
