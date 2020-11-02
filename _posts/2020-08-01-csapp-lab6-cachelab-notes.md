@@ -4,7 +4,7 @@ title:      csapp-cachelab-notes
 subtitle:   csapp-notes
 date:       2020-08-01
 author:     X1ng
-header-img: csapp_lab5.jpg
+header-img: csapp_lab6.jpg
 catalog: true
 tags:
 
