@@ -126,6 +126,7 @@ sudo gem install one_gadget
 ### 安装ROPgadget
 
 ```
+sudo apt-get install python-capstone
 git clone https://github.com/JonathanSalwan/ROPgadget.git
 cd ROPgadget
 sudo python setup.py install
