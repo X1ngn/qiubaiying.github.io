@@ -24,7 +24,7 @@ tags:
 
 用ghidra打开查看反汇编代码
 
-![](https://tva1.sinaimg.cn/large/0081Kckwly1gkhs0gpvyrj30u013bafh.jpg)
+![](https://tva1.sinaimg.cn/large/0081Kckwly1gky9ijt2ryj30u015o7a4.jpg)
 
 一开始会送一个gift，就是栈的地址
 
