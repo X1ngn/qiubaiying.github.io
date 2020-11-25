@@ -7,7 +7,7 @@ author:     X1ng
 header-img: 太湖杯2020.jpg
 catalog: true
 tags:
-    - 太湖杯
+    - 比赛
     - wp
 
 ---
