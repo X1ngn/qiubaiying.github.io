@@ -57,7 +57,7 @@ sudo apt-get update
 
 ```bash
 sudo apt-get install libffi-dev
-sudo apt-get install libssi-dev
+sudo apt-get install libssl-dev
 
 ```
 
