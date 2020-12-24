@@ -3,7 +3,7 @@ layout:     post
 title:      （转载）Pwn with Golang
 subtitle:   转载的一篇关于golang的文章
 date:       2020-10-24
-author:     X1ng
+author:     Unknow
 header-img: pwn_with_go.jpg
 catalog: true
 tags:
