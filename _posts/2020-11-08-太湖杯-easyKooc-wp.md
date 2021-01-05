@@ -76,7 +76,7 @@ shellcode += b"\xab\x0f\x02\x24"  # addiu;$v0, $zero, 0xfab
 shellcode += b"\x0c\x01\x01\x01"  # syscall 0x40404
 ```
 
-后面又发现一些小问题，本地io和远程io又有点不一样导致远程没办法接收堆地址，然后发现每次泄露传回来的地址都一样，才想起来alsr直接是关闭的，连堆地址都是固定的了
+后面又发现一些小问题，本地io和远程io又有点不一样导致远程没办法接收堆地址，然后发现每次泄露传回来的地址都一样，但是发现alsr直接是关闭的，连堆地址都是固定的了
 
 ![](https://tva1.sinaimg.cn/large/0081Kckwly1gkhsmd535uj30o6086jsx.jpg)
 
