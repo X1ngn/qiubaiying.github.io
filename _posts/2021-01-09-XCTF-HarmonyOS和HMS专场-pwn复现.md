@@ -198,7 +198,7 @@ gdb调一下发现在echo不存在的文件的时候可以输入0x200个字节
 由于pie和NX，什么栈地址、libc加载地址都是固定的，所以一开始想直接在栈中布置shellcode，覆盖返回地址到shellcode，google到一段执行`execve("/bin/sh", NULL, 0)`的shellcode
 
 ```python
-#from http://shell-storm.org/shellcode/files/shellcode-908.php
+
 
 '''
 0x000100b0      0111           addi sp, sp, -32 
