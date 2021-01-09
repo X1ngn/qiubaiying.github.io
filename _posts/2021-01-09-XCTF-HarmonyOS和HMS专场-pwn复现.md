@@ -22,7 +22,7 @@ tags:
 
 ![](https://tva1.sinaimg.cn/large/0081Kckwly1gm6dbcko44j31um04i0tm.jpg)
 
-arm文件，但是没有ld很懵
+arm文件，只开了NX保护，但是没有ld很懵
 
 https://www.cnblogs.com/zq10/p/13207370.html：
 
@@ -38,7 +38,7 @@ ida打开
 
 ![](https://tva1.sinaimg.cn/large/0081Kckwly1gm6dc6ljnyj31hu0jmwfa.jpg)
 
-惊了，居然是栈溢出，关了NX，需要用ROP
+惊了，居然是栈溢出，但是有NX保护，需要用ROP
 
 并且没有开启pie，libc加载地址是固定的，可以用ROPgadget找libc中的gadget，直接调用system
 
