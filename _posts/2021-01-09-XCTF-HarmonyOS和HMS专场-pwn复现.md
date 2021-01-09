@@ -18,6 +18,8 @@ tags:
 
 ## pwn1
 
+[附件](https://github.com/X1ngn/ctf/blob/master/pwn1.zip)
+
 例行检查
 
 ![](https://tva1.sinaimg.cn/large/0081Kckwly1gm6dbcko44j31um04i0tm.jpg)
@@ -101,6 +103,8 @@ ia()
 
 
 ## harmoshell
+
+[附件](https://github.com/X1ngn/ctf/blob/master/pwn_harmoshell.zip)
 
 - 神奇的RISC-V架构，ida不支持，后来才知道可以用9.2版本以上的[ghidra](https://ghidra-sre.org/)打开
 
@@ -330,7 +334,9 @@ ia()
 
 
 
-## harmoshell
+## harmoshell2
+
+[附件](https://github.com/X1ngn/ctf/blob/master/pwn_harmoshell2.zip)
 
 例行检查
 
