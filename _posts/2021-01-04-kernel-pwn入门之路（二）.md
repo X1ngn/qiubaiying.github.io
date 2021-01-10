@@ -16,7 +16,7 @@ tags:
 
 这好吗？这不好，，所以赶紧学学kernel pwn，记个笔记
 
-非常感谢PKFXXXX学长的帮助，，学长从栈溢出带着我学到pwn内核or2
+非常感谢PKFXXXX学长的帮助 or2
 
 ## 例题
 
