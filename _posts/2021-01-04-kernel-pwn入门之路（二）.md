@@ -117,7 +117,7 @@ chmod +x startvm.sh
 exp：
 
 ```c
-//gcc -static -o exp exp.c
+//gcc -o exp exp.c -static
 
 #include <stdio.h>
 #include <pthread.h>
