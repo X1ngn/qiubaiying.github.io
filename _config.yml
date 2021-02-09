@@ -96,11 +96,11 @@ service-worker: true
 
 
 
-# Friends
-#friends: [
-#    {
-#        title: "WY",
-#        href: "http://zhengwuyang.com"
+ Friends
+friends: [
+    {
+        title: "Yan99",
+        href: "http://www.yang99.top/"
 #    },{
 #        title: "简书·BY",
 #        href: "http://www.jianshu.com/u/e71990ada2fd"
@@ -110,5 +110,5 @@ service-worker: true
 #    },{
 #        title: "Apple Developer",
 #        href: "https://developer.apple.com/"
-#    }
-#]
+    }
+]
