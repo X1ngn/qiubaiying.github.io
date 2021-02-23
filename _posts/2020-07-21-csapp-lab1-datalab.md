@@ -5,7 +5,7 @@ subtitle:   csapp-lab
 date:       2020-07-21
 author:     X1ng
 header-img: csapp_lab1.jpg
-catalog: true
+catalog: false
 tags:
 
 - lab
