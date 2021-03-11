@@ -59,6 +59,8 @@ tags:
 
 ### 3、unlink宏绕过
 
+在将chunk0和chunk1合并之前，由于chunk0是free状态（chunk1的PREV_INUSE为0），所以需要将chunk0从它所在的bin中取出，也就是进行unlink操作，而unlink宏有一个验证
+
 unlink宏：
 
 ```
@@ -125,7 +127,7 @@ ida64打开
 
 
 
-所以大致思路是 先通过UAF泄露heap地址和libc地址，再通过House Of Einherjar在(`.bss`+0x40)处伪造fake_chunk，即可复写 保存所有chunk的大小和地址 的数组（因为该数组在`.bss`+0x40不远处），然后填充原本chunk1的位置为environ的地址，泄露计算出main_ret_addr，让chunk1指向main_ret_addr，将`main`函数的返回值地址修改为`one_gadget`地址
+所以大致思路是 先通过UAF泄露heap地址和libc地址，再通过House Of Einherjar在(`.bss`+0x40)处伪造fake_chunk，即可复写 保存所有chunk的大小和地址 的数组（因为该数组在`.bss`+0x40不远处），然后填充原本chunk1的位置为environ的地址，泄露计算出main_ret_addr，让chunk1指向main_ret_addr，将`main`函数的返回地址修改为`one_gadget`地址
 
 
 
@@ -262,7 +264,3 @@ p.interactive()
 ```
 
 
-
-## 总结
-
-house of einherjar其实就是让程序在malloc时，可以分配到任意的地址，结合其他利用手段，可以产生巨大威力
