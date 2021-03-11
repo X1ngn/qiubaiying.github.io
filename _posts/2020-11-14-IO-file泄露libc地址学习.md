@@ -1,10 +1,10 @@
 ---
 layout:     post
-title:      IOfile泄露libc地址学习笔记
+title:      IO_FILE泄露libc地址学习笔记
 subtitle:   笔记
 date:       2020-11-14
 author:     X1ng
-header-img: IOfile泄露libc.jpg
+header-img: IO_FILE泄露libc.jpg
 catalog: true
 tags:
 
@@ -13,23 +13,23 @@ tags:
 
 ---
 
-由于做过的题太少了（太菜了），很多时候就算知道某个套路题，调试写出exp也很慢，平时不做题到比赛时已经把知识点忘光了，水篇笔记让我比赛的时候快速回忆IOfile泄露libc的知识点
+由于做过的题太少了（太菜了），很多时候就算知道某个套路题，调试写出exp也很慢，平时不做题到比赛时已经把知识点忘光了，水篇笔记让我比赛的时候快速回忆IO_FILE泄露libc的知识点
 
 ## 利用方法
 
-其实就是修改stdout的flag位为`0xfbad1800`,并且将`_IO_write_base`的最后一个字节改小，输出一些内容，这些内容里面就包含libc地址，具体的原理网上都可以找到讲的很好的师傅，可以看看[这个师傅的博客](https://n0va-scy.github.io/2019/09/21/IO_FILE/)
+其实就是修改stdout的flag位为`0xfbad1800`,并且将`_IO_write_base`的最后一个字节改小，输出一些内容，这些内容里面一般都包含libc地址，具体的原理网上都可以找到讲的很好的师傅，可以看看[这个师傅的博客](https://n0va-scy.github.io/2019/09/21/IO_FILE/)
 
 ### 在libc-2.23.so下
 
-构造堆块重叠时，需要让一块内存先进入0x70大小的fastbin中，然后再让它进入unsortbin中，最后修改unsortedbin下留下的`main_arena+88`地址
+构造堆块重叠时，需要让一块内存先进入0x70大小的fastbin中，然后再让它进入unsortbin中，然后修改unsortedbin下留下的`main_arena+88`地址
 
 ![](https://tva1.sinaimg.cn/large/0081Kckwly1gkp2s5in4hj30jy080gn4.jpg)
 
-用pwntools的send函数发送数据来覆盖最后两字节为`\xdd\xN5`，N需要爆破1/16
+用pwntools的send函数发送数据来覆盖最后两字节为`\xdd\xN5`（_IO_2_1_stdout_结构体的地址的最低2字节），N需要爆破1/16
 
 可以用`p &_IO_2_1_stdout_`来查看stdout结构体的地址，实际上应该是比`main_arena+88`大了0x1000左右，比如上图在调试的时候可以用gdb的`set`命令将fd修改为0x7f8d780af5dd，方便调试
 
-malloc两次之后就可以将chunk分配到`_IO_2_1_stdout_`结构体之前的一个地方，因为这段内存中的数据为`0xNNNNNNNNNNNNNNNN 0xNNNNNNNN0000007f`，可以绕过fastbin分配的时候对size的检查
+从fastbin里malloc两次之后就可以将chunk分配到`_IO_2_1_stdout_`结构体之前的一个地方，因为这段内存中的数据为`0xNNNNNNNNNNNNNNNN 0xNNNNNNNN0000007f`，可以绕过fastbin分配的时候对size的检查
 
 然后填充payload：`'A'*0x33 + p64(0xfbad1800) + p64(0)*3 + b'\x00'`
 
@@ -170,36 +170,6 @@ while True:
 	except:
 		p.close()
 
-'''
-0x45226 execve("/bin/sh", rsp+0x30, environ)
-
-constraints:
-
-  rax == NULL
-
-
-0x4527a execve("/bin/sh", rsp+0x30, environ)
-
-constraints:
-
-  [rsp+0x30] == NULL
-  
-
-0xf0364 execve("/bin/sh", rsp+0x50, environ)
-
-constraints:
-
-  [rsp+0x50] == NULL
-  
-
-0xf1207 execve("/bin/sh", rsp+0x70, environ)
-
-constraints:
-
-  [rsp+0x70] == NULL
-  
-
-'''
 ```
 
 
