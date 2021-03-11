@@ -20,7 +20,7 @@ tags:
 
 ![](https://tva1.sinaimg.cn/large/0081Kckwly1gkhs0r2ec6j313808macq.jpg)
 
-开启了 和canary保护，mips下不支持NX保护，所以这里的NX开不开都是一样的
+开启了relro和canary保护，mips下不支持NX保护，所以这里的NX开不开都是一样的
 
 用ghidra打开查看反汇编代码
 
@@ -76,7 +76,7 @@ shellcode += b"\xab\x0f\x02\x24"  # addiu;$v0, $zero, 0xfab
 shellcode += b"\x0c\x01\x01\x01"  # syscall 0x40404
 ```
 
-后面又发现一些小问题，本地io和远程io又有点不一样导致远程没办法接收堆地址，然后发现每次泄露传回来的地址都一样，但是发现alsr直接是关闭的，连堆地址都是固定的了
+后面又发现一些小问题，本地io和远程io又有点不一样导致远程没办法接收堆地址，然后发现每次泄露传回来的地址都一样，也就是说堆地址都是固定的了
 
 ![](https://tva1.sinaimg.cn/large/0081Kckwly1gkhsmd535uj30o6086jsx.jpg)
 
