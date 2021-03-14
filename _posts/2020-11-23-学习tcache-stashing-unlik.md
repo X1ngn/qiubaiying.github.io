@@ -103,7 +103,7 @@ show函数限制了次数
 
 思路就是uaf泄露堆地址和libc，构造smallbin中保存两个chunk，然后malloc申请掉一个tcache的chunk，uaf写smallbin中后进入的chunk的bk为`*buf-0x10`，这样再次调用calloc的时候就会将flag前面的随机数写为一个libc中的地址
 
-贴一下学长的exp：
+贴一下 **@PTT0** 学长的exp：
 
 ```python
 #!/usr/bin/python
