@@ -195,7 +195,7 @@ gdb调一下发现在echo不存在的文件的时候可以输入0x200个字节
 
 ![](https://tva1.sinaimg.cn/large/008eGmZEly1gmef1g9edcj30u00x5ack.jpg)
 
-由于pie和NX，什么栈地址、libc加载地址都是固定的，所以一开始想直接在栈中布置shellcode，覆盖返回地址到shellcode，google到一段执行`execve("/bin/sh", NULL, 0)`的shellcode
+调试发现栈地址、libc加载地址都是固定的，所以一开始想直接在栈中布置shellcode，覆盖返回地址到shellcode，google到一段执行`execve("/bin/sh", NULL, 0)`的shellcode
 
 ```python
 #from http://shell-storm.org/shellcode/files/shellcode-908.php
@@ -362,7 +362,7 @@ echo函数
 
 ![](https://tva1.sinaimg.cn/large/008eGmZEly1gmghnw1oo7j313w0qadhh.jpg)
 
-用memcpy向堆地址中复制输入的内容
+用memcpy向堆地址中写我们输入的内容
 
 这里的反汇编似乎有些问题，应该是通过判断参数4是否为0来判断用户输入的是">"还是">>"，即是覆盖还是追加
 
