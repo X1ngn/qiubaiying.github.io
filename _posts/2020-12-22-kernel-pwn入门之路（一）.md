@@ -26,7 +26,7 @@ tags:
 
 ### kernel的作用：
 
-kernel也是一个程序用来管理软件发出的数据 I/O 要求，将这些要求转义为指令，交给 CPU 和计算机中的其他组件处理
+kernel也是一个程序，用来管理软件发出的数据 I/O 要求，将这些要求转义为指令，交给 CPU 和计算机中的其他组件处理
 
 1. 控制并与硬件进行交互
 2. 提供 application 能运行的环境
@@ -41,8 +41,8 @@ intel CPU 将 CPU 的特权级别分为 4 个级别：Ring 0、Ring 1、Ring 2�
 
 - 从内核态返回的时候
     1. 在栈上布置好寄存器的值并恢复
-    2. 64位下才需要执行`swapgs`，用于置换`GS`寄存器和`KernelGSbase MSR`寄存器的内容）
-    3. 执行`sysretq`'和 `iret` 指令返回内核态（使用`iretq`指令还需要给出CS、eflags/rflags、esp/rsp等一些用户空间的信息）
+    2. 64位下才需要执行`swapgs`，用于置换`GS`寄存器和`KernelGSbase MSR`寄存器的内容
+    3. 执行`sysretq`和 `iret` 指令返回用户态（使用`iretq`指令还需要给出CS、eflags/rflags、esp/rsp等一些用户空间的信息）
 
 >可以通过以下函数来获取并保存用户态寄存器信息
 >
@@ -101,7 +101,7 @@ close:关闭模块
 
     ![img](https://tva1.sinaimg.cn/large/0081Kckwly1glvyapez50j30gm06v0sz.jpg)
 
-    内核在加载驱动的时候，会调用驱动程序中的`module_init()`函数，`module_init()`函数再调用`misc_register()`来向内核注册驱动
+    内核在加载驱动的时候，会调用驱动程序中的`module_init()`函数，`module_init()`函数再调用相应的注册函数来向内核注册驱动（比如`misc_register()`函数）
 
 ### 设备类型
 
