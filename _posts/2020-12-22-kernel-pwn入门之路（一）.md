@@ -176,14 +176,14 @@ file结构体是内核中用来描述文件属性的结构体
 >#ifndef _FILE_DEFINED
 >struct _iobuf {
 > 
->　　　　char *_ptr; //文件输入的下一个位置
->　　　　int _cnt; //当前缓冲区的相对位置
->　　　　char *_base; //指基础位置(即是文件的其始位置)
->　　　　int _flag; //文件标志
->　　　　int _file; //文件描述符
->　　　　int _charbuf; //检查缓冲区状况,如果无缓冲区则不读取
->　　　　int _bufsiz; //缓冲区大小
->　　　　char *_tmpfname; //临时文件名
+>        char *_ptr; //文件输入的下一个位置
+>        int _cnt; //当前缓冲区的相对位置
+>        char *_base; //指基础位置(即是文件的其始位置)
+>        int _flag; //文件标志
+>        int _file; //文件描述符
+>        int _charbuf; //检查缓冲区状况,如果无缓冲区则不读取
+>        int _bufsiz; //缓冲区大小
+>        char *_tmpfname; //临时文件名
 > 
 >        };
 >typedef struct _iobuf FILE;
@@ -285,7 +285,7 @@ cmd:控制命令
 
     ![](https://tva1.sinaimg.cn/large/0081Kckwgy1glveuriyuoj30nr09xt9m.jpg)
 
-    `dmesg_restrict`、`dmesg_restrict`可在`rcS`文件中修改；
+    `kptr_restrict`、`dmesg_restrict`可在`rcS`文件中修改；
 
     ![](https://tva1.sinaimg.cn/large/0081Kckwgy1glvev351g0j30cb0b0gm1.jpg)
 
@@ -299,7 +299,7 @@ cmd:控制命令
 
     ```c
     struct cred {
-    	atomic_t usage;
+      atomic_t usage;
       uid_t uid;
       gid_t gid;
       struct rcu_head exterminate;
