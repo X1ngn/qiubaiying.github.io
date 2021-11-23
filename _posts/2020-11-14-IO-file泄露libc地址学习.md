@@ -9,7 +9,7 @@ catalog: true
 tags:
 
     - 学习笔记
-    - IOfile泄露libc
+    - pwn
 
 ---
 
