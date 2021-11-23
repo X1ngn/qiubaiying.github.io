@@ -7,9 +7,9 @@ author:     X1ng
 header-img: kernel.jpg
 catalog: true
 tags:
-    - kernel pwn
+    - Linux kernel
+    - pwn
     - 学习笔记
-
 ---
 
 只会做几个烂大街的堆题目，，比赛堆题签个到走人
