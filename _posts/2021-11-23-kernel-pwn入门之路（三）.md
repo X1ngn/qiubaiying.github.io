@@ -7,7 +7,8 @@ author:     X1ng
 header-img: kernel.jpg
 catalog: true
 tags:
-    - kernel pwn
+    - kernel
+    - pwn
     - 学习笔记
 ---
 
