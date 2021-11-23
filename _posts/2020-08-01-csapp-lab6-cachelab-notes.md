@@ -8,12 +8,8 @@ header-img: csapp_lab6.jpg
 catalog: true
 tags:
 
-- notes
+- 学习笔记
 - csapp
-
-
-
-
 
 ---
 
