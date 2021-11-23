@@ -7,9 +7,9 @@ author:     X1ng
 header-img: XCTF2020.jpg
 catalog: true
 tags:
-    - XCTF2020
+    - XCTF
+    - pwn
     - wp
-
 ---
 
 发现队友全都咕咕咕了，，然后我也咕咕咕了（就算不摸鱼也做不出来呀
