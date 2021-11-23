@@ -475,7 +475,7 @@ c3       : ret;
 >
 > [Linux Kernel Exploit 内核漏洞学习(4)-RW Any Memory - 先知社区 (aliyun.com)](https://xz.aliyun.com/t/6067#toc-12)
 >
-> [kernel pwn: kernoob -- 不仅仅是double fetch | Nop's Blog (n0nop.com)](https://n0nop.com/2021/03/29/kernel-pwn-kernoob-不仅仅是double-fetch/)
+> [kernel pwn: kernoob -- 不仅仅是double fetch——Nop's Blog (n0nop.com)](https://n0nop.com/2021/03/29/kernel-pwn-kernoob-不仅仅是double-fetch/)
 >
 > [slub堆溢出的利用 - 安全客，安全资讯平台 (anquanke.com)](https://www.anquanke.com/post/id/259280#h2-21)
 
