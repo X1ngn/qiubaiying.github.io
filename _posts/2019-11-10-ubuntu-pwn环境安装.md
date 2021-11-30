@@ -143,8 +143,7 @@ sudo gem install one_gadget
 sudo apt-get install python-capstone
 git clone https://github.com/JonathanSalwan/ROPgadget.git
 cd ROPgadget
-sudo python3 setup.py install
-cp -r ./scripts /home/tee/.local/lib/python3.8/site-packages/ROPGadget-6.6.dist-info
+sudo -H python3 setup.py install
 cd ..
 ```
 
