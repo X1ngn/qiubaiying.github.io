@@ -120,9 +120,13 @@ io += p64(_IO_str_jumps)
 
 ```c
 //gcc -o pig pig.c
+
 #include<stdio.h>
+
 #include <unistd.h>
+
 #define MAXIDX 5
+
 
 void init()
 {
@@ -562,9 +566,13 @@ pwndbg> distance _rtld_global._dl_ns._ns_loaded &_rtld_global._dl_ns._ns_loaded-
 
 ```c
 //gcc -o banana banana.c
+
 #include<stdio.h>
+
 #include <unistd.h>
+
 #define MAXIDX 5
+
 
 void init()
 {
