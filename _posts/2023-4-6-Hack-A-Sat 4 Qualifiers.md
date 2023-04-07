@@ -344,7 +344,7 @@ Scheduler {
 
 结合频道里赛后交流的佬们的思路写exp
 
-Generater.py
+Generator.py
 
 ```python
 def emit_check(char_idx, char_val):
