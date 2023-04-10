@@ -373,7 +373,7 @@ if __name__ == "__main__":
 
 
 
-## Midnight Sun CTF Quals
+## Midnight Sun CTF 2023 Quals
 
 ### pyttemjuk
 
