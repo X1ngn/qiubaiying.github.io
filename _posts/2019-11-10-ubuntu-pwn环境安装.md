@@ -202,6 +202,14 @@ while s:
 ```
 
 
+### 安装seccomp-tools
+
+```shell
+sudo apt install gcc ruby-dev
+gem install seccomp-tools
+```
+
+
 
 ### 安装docker
 
