@@ -2,7 +2,7 @@
 layout:     post
 title:      DamCTF and Midnight Sun CTF Qualifiers
 subtitle:   一些PWN题目
-date:       2023-04-06
+date:       2023-04-10
 author:     X1ng
 header-img: 
 catalog: true
